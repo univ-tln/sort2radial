@@ -1,0 +1,23 @@
+! Filename of the calibration file only needed if USORT data files
+'../etc/calibration.wera'
+! Coordinates file of the Rx array with the origin centered on the 0 antenna
+'../etc/conf_WERA.ant'
+! Velocity mask file
+''
+! alcov2 file
+'../etc/alcov2_gar.bin'
+! Site name
+'Site'
+! Test if reversing the antennas is needed
+.FALSE.
+! Verbose
+.TRUE.
+! Minimal range of interest (km)
+6.0
+! Maximal range of interest (km)
+150.0
+! Maximal radial velocity (m/s)
+4.0
+! Azimutal increment
+0.5
+

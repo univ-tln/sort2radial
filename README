@@ -1,0 +1,106 @@
+################
+SORT2RADIAL 1-rev16
+################
+
+#Copyright Actimar 2016
+
+This software called SORT2RADIAL is a computer program whose purpose is to 
+derive radial current velocities from input SORT or USORT Wera radar 
+data using the MUSIC algorithm. It is a fortran version of 
+the Matlab code developped by "Laboratoire de Sondages Electromagnétiques
+de l'Environnement Terrestre, UMR 6017" now integrated into the MIO
+(Mediterranean Institute of Oceanography).
+
+This software is governed by the CeCILL license under French law and
+abiding by the rules of distribution of free software.  You can  use, 
+modify and/ or redistribute the software under the terms of the CeCILL
+license as circulated by CEA, CNRS and INRIA at the following URL
+"http://www.cecill.info". 
+
+As a counterpart to the access to the source code and  rights to copy,
+modify and redistribute granted by the license, users are provided only
+with a limited warranty  and the software's author,  the holder of the
+economic rights,  and the successive licensors  have only  limited
+liability.
+
+In this respect, the user's attention is drawn to the risks associated
+with loading,  using,  modifying and/or developing or reproducing the
+software by the user in light of its specific status of free software,
+that may mean  that it is complicated to manipulate,  and  that  also
+therefore means  that it is reserved for developers  and  experienced
+professionals having in-depth computer knowledge. Users are therefore
+encouraged to load and test the software's suitability as regards their
+requirements in conditions enabling the security of their systems and/or 
+data to be ensured and,  more generally, to use and operate it in the 
+same conditions as regards security.
+
+The fact that you are presently reading this means that you have had
+knowledge of the CeCILL license and that you accept its terms.
+
+
+###############
+#How to compile
+###############
+
+- You will need a fortran compiler, for instance intel ifort,  or gfortran
+- Current makefile is configured for use with gfortran
+- You will need a c compiler
+- Current makefile is configured, for instance  intel icc,  or gcc
+- Current makefile is configured for use with gcc
+- Run the Makefile :
+
+make
+
+###############
+#How to execute
+###############
+
+- bin/main.exe reads parameters in standard input and take as arguments:
+  1 : path of output file
+  2 to N : several paths of SORT or USORT files.
+- Typical execution commande is the following:
+
+cat <param_file> | ./bin/main.exe <output_file.asc> <file_USORT1> <file_USORT2> ... <file_USORTN>
+
+- Input parameters and their meaning are described in the example:
+etc/params.txt
+
+- Example of output ascii file 
+
+"""
+Radial surface current velocities
+<site_name> <longitude_radar_deg> <latitude_radar_deg>
+<date_begin_mes> <hour_begin_mes>
+<mes_duration_minutes> <mes_duration_sec>
+    <first_range_cell_km>  <last_range_cell_km>   <nb_range_cells>
+    <first_azimuth_cell_deg>  <last_azimuth_cell_deg>   <nb_range_cells>
+ Iran  Iazi  R(Km)     Azi(deg.) Lat(deg.)     Lon(deg.)     Vel(m/s)
+    19   241   32.65500  309.000   49.68423813   -8.35166656 -0.214
+    36   241   58.15500  309.000   49.82735662   -8.62812838 -0.272
+    37   241   59.65500  309.000   49.83575466   -8.64444157 -0.272
+     1   240    5.65500  308.500   49.53163580   -8.06113632 -0.194
+     1   238    5.65500  307.500   49.53093607   -8.06197483 -0.272
+...
+"""
+
+With :
+<Iran> : # of range cell
+<Iazi> : # of azimuth cell
+<R> : Cell range (km)
+<Azi> : Cell azimuth from radar station (deg.)
+<Lat> : Cell latitude (deg.)
+<Lon> : Cell longitude (deg.)
+<Vel> : Radial velocity of the current in this cell (m/s)
+
+
+############################
+#How to test with an example
+############################
+
+- Run the test :
+
+make test
+
+-> This produce the output ascii file example/2014104000000.rad
+   which should be the same than example/2014104000000_ref.rad.
+   An indicative plot of this datafile in provided in example/2014104000000.rad.png 
