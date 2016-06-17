@@ -1,15 +1,16 @@
 ################
-SORT2RADIAL 1-rev16
+SORT2RADIAL 1-rev16 v2
 ################
 
 #Copyright Actimar 2016
 
 This software called SORT2RADIAL is a computer program whose purpose is to 
 derive radial current velocities from input SORT or USORT Wera radar 
-data using the MUSIC algorithm. It is a fortran version of 
-the Matlab code developped by "Laboratoire de Sondages Electromagnétiques
-de l'Environnement Terrestre, UMR 6017" now integrated into the MIO
-(Mediterranean Institute of Oceanography).
+data using a matched direction finding algorithm.
+ 
+It is a fortran version of the Matlab code developped by 
+"Laboratoire de Sondages Electromagnétiques de l'Environnement Terrestre, UMR 6017" 
+now integrated into the MIO (Mediterranean Institute of Oceanography).
 
 This software is governed by the CeCILL license under French law and
 abiding by the rules of distribution of free software.  You can  use, 
